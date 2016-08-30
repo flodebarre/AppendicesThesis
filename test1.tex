@@ -1,0 +1,34 @@
+\documentclass{book}
+\usepackage{appendix}
+\usepackage{chngcntr}
+
+% To reset chapter counter for every part
+\counterwithin*{chapter}{part}
+
+% To reset appendix counter for every `appendices` environment
+\renewcommand{\restoreapp}{}
+
+\begin{document}
+    \part{One}
+        \chapter{Ch One}
+        \chapter{Ch Two}
+        \chapter{Ch Three}
+      \begin{appendices}
+        \chapter{Appendix A}
+      \end{appendices}
+    \part{Two}
+        \chapter{Ch One}
+        \chapter{Ch Two}
+      \begin{appendices}
+        \chapter{Appendix A}
+        \chapter{Appendix B}
+      \end{appendices}
+    \part{Three}
+        \chapter{Ch One}
+        \chapter{Ch Two}
+        \chapter{Ch Three}
+        \chapter{Ch Four}
+      \begin{appendices}
+        \chapter{Appendix A}
+      \end{appendices}
+\end{document}
