@@ -1,20 +1,31 @@
 \documentclass{book}
-\usepackage[]{appendix}
-\usepackage{lipsum}
 
+\usepackage[]{appendix} % Needed for subappendices, ie appendices within a chapter
+\usepackage{lipsum} % To add dummy text
+
+%% These options are not needed with the way we did it
+%-----------------------------------------------------------------------
 %% To reset chapter counter for every part
 %\usepackage{chngcntr}
 %\counterwithin*{chapter}{part}
 
 % To reset appendix counter for every `appendices` environment
 %\renewcommand{\restoreapp}{}
+%-----------------------------------------------------------------------
 
+% Define name of the appendices (update with the name you want)
+\def \appname {Annexe}
+ 
+% Define a new environment for appendices
 \newenvironment{miraineapp}{%
+
 	\clearpage % Page break to start on new page (check also \cleardoublepage)
+	
 	\begin{subappendices}
-	\section*{Annexe} % Add unnumbered section called Annexe
-	\markright{\sc Annexe} % Change header
-	\addcontentsline{toc}{section}{Annexe} % Add to TOC
+
+	\section*{\appname} % Add unnumbered section called Annexe (update with the name you want)
+	\markright{\sc \appname} % Change header (update it to match your style)
+	\addcontentsline{toc}{section}{\appname} % Add to TOC
 
 	% Update counters	
 	%% Equations		
@@ -50,8 +61,8 @@ b=3
 
 \section{Section 2}
 \lipsum[2-3]
-        
-        
+
+% Test the new environment
 \begin{miraineapp}
 \subsection{bla}
 \begin{equation}
@@ -61,10 +72,11 @@ a=b
 \lipsum[1]
 \end{miraineapp}
 
-
 \chapter{Deuxieme papier}
 \section{Section 1}
 \lipsum[1-3]
+
+% Test the new environment
 \begin{miraineapp}
 \subsection{bla}
 \begin{equation}
@@ -77,4 +89,5 @@ c=2
 \chapter{Troisieme papier}
 \section{Section 1}
 \lipsum[1-3]
+
 \end{document}
