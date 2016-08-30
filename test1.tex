@@ -1,45 +1,80 @@
 \documentclass{book}
 \usepackage[]{appendix}
-\usepackage{chngcntr}
 \usepackage{lipsum}
-% To reset chapter counter for every part
-\counterwithin*{chapter}{part}
+
+%% To reset chapter counter for every part
+%\usepackage{chngcntr}
+%\counterwithin*{chapter}{part}
 
 % To reset appendix counter for every `appendices` environment
-\renewcommand{\restoreapp}{}
+%\renewcommand{\restoreapp}{}
+
+\newenvironment{miraineapp}{%
+	\clearpage % Page break to start on new page (check also \cleardoublepage)
+	\begin{subappendices}
+	\section*{Annexe} % Add unnumbered section called Annexe
+	\markright{\sc Annexe} % Change header
+	\addcontentsline{toc}{section}{Annexe} % Add to TOC
+
+	% Update counters	
+	%% Equations		
+	\renewcommand{\theequation}{\thechapter.A-\arabic{equation}}
+	\setcounter{equation}{0}  % reset counter
+    %% Figures
+	\renewcommand{\thefigure}{\thechapter.A-\arabic{figure}}
+	\setcounter{figure}{0}
+	%% Subsections
+	\renewcommand{\thesubsection}{\thechapter.A-\arabic{subsection}}
+}{%
+	\end{subappendices}
+}
 
 \begin{document}
 \tableofcontents
- %   \part{One}
-        \chapter{Premier papier}
-        \section{Section 1}
-        \lipsum[1]
-        \begin{equation}
-        a=2
-        \end{equation}
-        \begin{equation}
-        b=3
-        \end{equation}
-        \section{Section 2}
-        \lipsum[2-3]
-        
-        \clearpage
-        \begin{subappendices}
-		\section*{Annexe Chapitre 1} 
-		\markright{Annexe Chapitre 1}
-		\addcontentsline{toc}{section}{Annexe}
-		
-%\renewcommand{\theequation}{\thesection.\arabic{equation}}
-%\setcounter{equation}{0}  % reset counter
-%\renewcommand{\thefigure}{S\arabic{figure}}
-%\setcounter{figure}{0}
 
- \lipsum[1]
-		\begin{equation}
-		a\neq b
-		\end{equation}
-		\lipsum[2]
-        \end{subappendices}
-        \chapter{Deuxieme papier}
-        \chapter{Troisieme papier}
+%   \part{One}
+
+\chapter{Introduction}
+\lipsum[1-3]
+\chapter{Premier papier}
+
+\section{Section 1}
+\lipsum[1]
+\begin{equation}
+a=2
+\end{equation}
+
+\begin{equation}
+b=3
+\end{equation}
+
+\section{Section 2}
+\lipsum[2-3]
+        
+        
+\begin{miraineapp}
+\subsection{bla}
+\begin{equation}
+a=b
+\end{equation}
+\subsection{bli}
+\lipsum[1]
+\end{miraineapp}
+
+
+\chapter{Deuxieme papier}
+\section{Section 1}
+\lipsum[1-3]
+\begin{miraineapp}
+\subsection{bla}
+\begin{equation}
+c=2
+\end{equation}
+\subsection{bli}
+\lipsum[1]
+\end{miraineapp}
+ 
+\chapter{Troisieme papier}
+\section{Section 1}
+\lipsum[1-3]
 \end{document}
