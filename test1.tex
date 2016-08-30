@@ -1,7 +1,7 @@
 \documentclass{book}
-\usepackage{appendix}
+\usepackage[]{appendix}
 \usepackage{chngcntr}
-
+\usepackage{lipsum}
 % To reset chapter counter for every part
 \counterwithin*{chapter}{part}
 
@@ -9,26 +9,37 @@
 \renewcommand{\restoreapp}{}
 
 \begin{document}
-    \part{One}
-        \chapter{Ch One}
-        \chapter{Ch Two}
-        \chapter{Ch Three}
-      \begin{appendices}
-        \chapter{Appendix A}
-      \end{appendices}
-    \part{Two}
-        \chapter{Ch One}
-        \chapter{Ch Two}
-      \begin{appendices}
-        \chapter{Appendix A}
-        \chapter{Appendix B}
-      \end{appendices}
-    \part{Three}
-        \chapter{Ch One}
-        \chapter{Ch Two}
-        \chapter{Ch Three}
-        \chapter{Ch Four}
-      \begin{appendices}
-        \chapter{Appendix A}
-      \end{appendices}
+\tableofcontents
+ %   \part{One}
+        \chapter{Premier papier}
+        \section{Section 1}
+        \lipsum[1]
+        \begin{equation}
+        a=2
+        \end{equation}
+        \begin{equation}
+        b=3
+        \end{equation}
+        \section{Section 2}
+        \lipsum[2-3]
+        
+        \clearpage
+        \begin{subappendices}
+		\section*{Annexe Chapitre 1} 
+		\markright{Annexe Chapitre 1}
+		\addcontentsline{toc}{section}{Annexe}
+		
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\setcounter{equation}{0}  % reset counter
+%\renewcommand{\thefigure}{S\arabic{figure}}
+%\setcounter{figure}{0}
+
+ \lipsum[1]
+		\begin{equation}
+		a\neq b
+		\end{equation}
+		\lipsum[2]
+        \end{subappendices}
+        \chapter{Deuxieme papier}
+        \chapter{Troisieme papier}
 \end{document}
